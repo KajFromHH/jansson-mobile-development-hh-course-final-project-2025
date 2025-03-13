@@ -126,4 +126,23 @@ Lastly I send my quick sketch how the interactive story will conceptually look l
 I started to develop my interactive story / visual novel app. For simplicity sake,
 I shall recall my conceptual story app from now on as _VN-app_.
 
+When I started my project, following question sprung up:
+
+1. _Horizontally or vertically?_
+
+In most of visual novels / interactive stories that I have played in PC and game system,
+they have been presented in horizontal (or landscape) window view as default.
+This due our most screen devices (TV and PC monitors) are also in horizontal dimensions.
+According to users visual novels forums, the horizontal view also allows multiple characters
+to be in same scene.
+
+However, for mobile visual novels, the vertical view (i.e. portait mode) is _**ergonomically**_
+better than the horizontal view. The user stated that horizontal view fatigues their hands faster
+than the vertical view.
+
+Thus, I have decided to develop my VN-app in vertical mode. Though I will sacrifice the option
+to present multiple in same scene / screen. Also I need to res-tructure the story convention,
+that are common in most visual novels (in horizontal view).
+
+2. __
  
