@@ -168,10 +168,10 @@ For quick answer, I asked Co-pilot for standards for giving numbers of specific 
 According Co-pilot, the most common convention for version numbering is ** Semantic Versioning** (SemVer),
 wich uses format **MAJOR.MINOR.PATCH**. I think the Semantic Versioning works perfectly to small mobile project.
 
-Copy of text prompt:
+_**Copy of text prompt:**_
 "Then about naming conventions in full stack project. When deploying or updating any app, it's the standard to tell users what versions are they installing and using. Most apps what I used have the typical serial number when describe version, such as Visual Studio Code 1.98.2. For a small mobile app as mine, how do I determine what serial number for version should I give? So far I have understood, that if the app is still in alpha and work in progress, then first number must be zero ("0.x"). When it is deployed for full release, then number will be changed to one ("1.x"). So my question is, what number must be added in x position of e.g. "0.x" and "1.x" according to standards?"
 
-Copy of Co-pilot answer:
+_**Copy of Co-pilot answer:**_
 "Version numbering is an important aspect of software development, and it's great that you're considering it for your app. The most common convention for version numbering is **Semantic Versioning (SemVer)**, which uses the format **MAJOR.MINOR.PATCH**. Here's a breakdown of how to determine the numbers:
 
 ### Semantic Versioning (SemVer)
