@@ -137,12 +137,67 @@ According to users visual novels forums, the horizontal view also allows multipl
 to be in same scene.
 
 However, for mobile visual novels, the vertical view (i.e. portait mode) is _**ergonomically**_
-better than the horizontal view. The user stated that horizontal view fatigues their hands faster
-than the vertical view.
+better than the horizontal view. The user **foleso** from lemmasoft forum stated that horizontal view will fatigue their hands more
+than the vertical view iin long periods of time.
 
-Thus, I have decided to develop my VN-app in vertical mode. Though I will sacrifice the option
-to present multiple in same scene / screen. Also I need to res-tructure the story convention,
-that are common in most visual novels (in horizontal view).
+Thus, I have decided to develop my VN-app in vertical mode, due comfortity to all possible users. 
+I will though sacrifice the option to present multiple in same scene / screen. 
+Also I need to res-tructure the story convention, that are common in most visual novels (in horizontal view).
+In other words, I need to write the story in aspect of mobile perspective. As user ketskari mentions in lemmaforum,
+"When the story is congruent with the format, that can be an extra touch.".
 
-2. __
+Source: https://lemmasoft.renai.us/forums/index.php?sid=e57199e54523f6c8858701aa7f38be3e
+
+2. _How to start? Tutorials?_
  
+Surprisingly, after Google searching tutorials for interactive stories in React Native, I mostly get
+results of Storybook tool for React Native. There were no tutorials about my VN-app idea.
+Thus, I need to take even more steps back. Starting with...
+
+a) Move from scene-to-scene / page-to-page.
+As the main function in stories, the user needs to able continue the story from page to page.
+Thus I need to first develop, as MVP, three scenes called "Beginning", "Middle" and "Ending", and make sure
+that I can move between scenes correctly.
+
+3. _Naming conventions for deploying apps to platform?_
+As most of applications ever released to the market, they have most certainitly 
+**a serial number** to indicate the version of application. For example, as March 13 2025,
+Visual Studio Code current version is 1.98.1 .
+
+For quick answer, I asked Co-pilot for standards for giving numbers of specific version.
+According Co-pilot, the most common convention for version numbering is ** Semantic Versioning** (SemVer),
+wich uses format **MAJOR.MINOR.PATCH**. I think the Semantic Versioning works perfectly to small mobile project.
+
+Copy of text prompt:
+"Then about naming conventions in full stack project. When deploying or updating any app, it's the standard to tell users what versions are they installing and using. Most apps what I used have the typical serial number when describe version, such as Visual Studio Code 1.98.2. For a small mobile app as mine, how do I determine what serial number for version should I give? So far I have understood, that if the app is still in alpha and work in progress, then first number must be zero ("0.x"). When it is deployed for full release, then number will be changed to one ("1.x"). So my question is, what number must be added in x position of e.g. "0.x" and "1.x" according to standards?"
+
+Copy of Co-pilot answer:
+"Version numbering is an important aspect of software development, and it's great that you're considering it for your app. The most common convention for version numbering is **Semantic Versioning (SemVer)**, which uses the format **MAJOR.MINOR.PATCH**. Here's a breakdown of how to determine the numbers:
+
+### Semantic Versioning (SemVer)
+- **MAJOR**: Incremented for major changes that are not backward-compatible. For example, when you release the first stable version of your app, you might start with `1.0.0`.
+- **MINOR**: Incremented for backward-compatible feature additions. For example, adding new features or significant improvements while maintaining compatibility with previous versions.
+- **PATCH**: Incremented for backward-compatible bug fixes. For example, fixing bugs or making minor improvements that do not affect the overall functionality.
+
+### Examples
+- **Alpha/Beta Versions**: While your app is in alpha or beta, you can use `0.x.y` to indicate that it is still in development. For example, `0.1.0` for the first beta release, `0.2.0` for the second beta release with new features, and `0.2.1` for a patch update.
+- **Stable Release**: Once your app is ready for a stable release, you can start with `1.0.0`. Subsequent updates would follow the SemVer convention:
+  - **1.1.0**: Adding new features.
+  - **1.1.1**: Fixing bugs.
+
+### Practical Example for Your App
+- **Initial Alpha Release**: `0.1.0`
+- **Second Alpha Release with New Features**: `0.2.0`
+- **Patch Update in Alpha**: `0.2.1`
+- **First Stable Release**: `1.0.0`
+- **New Features in Stable Release**: `1.1.0`
+- **Bug Fixes in Stable Release**: `1.1.1`
+
+### Summary
+- **MAJOR**: Significant changes, not backward-compatible (e.g., `1.x.x`).
+- **MINOR**: New features, backward-compatible (e.g., `x.1.x`).
+- **PATCH**: Bug fixes, backward-compatible (e.g., `x.x.1`).
+
+By following Semantic Versioning, you can clearly communicate the state and progress of your app to users. If you have any more questions or need further assistance, feel free to ask! 😊"
+
+Thus, I have decided to call my first deployment of my VN-app as _VN-app-0.1.0_.
