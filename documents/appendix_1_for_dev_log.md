@@ -109,4 +109,21 @@ This is due, that appendix 1 has become much longer than expected, risking the
 **actual** dev log to drown in wordly ocean. By dividing dev log into two,
 I can assure that most essential writings of dev log (i.e. the course's required
 learning diary) will be much easier to find and read.
+
+**March 11th 2025**
+* I send my concept to my teacher, which he approved. He pointed two important key feature
+that must be added to an interactive story app.
+1) **A save function and save menu** when users want save their progress
+and / or return to a specific game scene.
+2) **A looping music and sound effects** to give the story more life and
+also indication for user response. Thankfully I have a huge library of royalty-free
+music from Ovani Sound. 
+
+Lastly I send my quick sketch how the interactive story will conceptually look like (in Finnish):
+![image](https://github.com/user-attachments/assets/1a59dec2-dea2-4ecd-965e-1abf8e1433d8)
+
+**March 13th 2025**
+I started to develop my interactive story / visual novel app. For simplicity sake,
+I shall recall my conceptual story app from now on as _VN-app_.
+
  
