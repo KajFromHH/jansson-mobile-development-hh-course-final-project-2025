@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Pressable, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Scene05 from '../assets/images/scene04.svg';
+import Scene05 from '../assets/images/scene05.svg';
 import { RootStackParamList } from "../components/types";
 import { mainStyle } from "../styles/mainStyle";
 
