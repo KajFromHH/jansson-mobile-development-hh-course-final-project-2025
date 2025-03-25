@@ -1,0 +1,8 @@
+//Strict type checking, which reduce chances of runtime errors.
+//Source: https://docs.expo.dev/guides/typescript/
+{
+  "compilerOptions": {
+    "strict": true
+  },
+  "extends": "expo/tsconfig.base"
+}
