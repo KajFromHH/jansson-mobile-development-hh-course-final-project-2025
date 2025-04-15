@@ -27,7 +27,8 @@ export const mainStyle = StyleSheet.create({
     },
     image: {
         flex: 1,
-        width: '100%'
+        width: 'auto',
+        height: 'auto'
     }
 
 });

@@ -4,6 +4,7 @@
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Settings from "./components/Settings";
 import { RootStackParamList } from "./components/types";
 import scene01 from "./scenes/scene01";
 import scene02 from "./scenes/scene02";
@@ -37,6 +38,10 @@ export default function App() {
         <Stack.Screen
           name="scene05"
           component={scene05}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
         />
       </Stack.Navigator>
     </NavigationContainer>
