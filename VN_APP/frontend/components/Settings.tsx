@@ -1,17 +1,13 @@
 
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from 'react';
 import { Button } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { mainStyle } from '../styles/mainStyle';
 import { loadScene, saveScene } from '../utils/saveAndLoadScene';
-import { RootStackParamList } from './types';
+import { RootStackParamList, settingsProps } from './types';
 
 //Doing same screen function as in the scenes.
-
-type settingsProps = { navigation: NativeStackNavigationProp<RootStackParamList, 'Settings'> };
-
 
 
 export default function Settings({ navigation }: settingsProps) {
@@ -37,6 +33,13 @@ export default function Settings({ navigation }: settingsProps) {
                             { scene: successfullyLoadScene.scene, progress: successfullyLoadScene.progress }
                         );
                     }
+                }}
+            />
+            <Button
+                title="Audio"
+                onPress={() => {
+                    console.log("Navigate into Audio");
+                    navigation.navigate('AudioConfigs', { scene: route.params.scene, progress: route.params.progress })
                 }}
             />
             <Button

@@ -2,7 +2,8 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Pressable, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Scene02 from '../assets/images/scene02.svg';
+import Scene02Image from '../assets/images/scene02.svg';
+import { upAndDownAnimation } from "../components/Animations";
 import { ProgressData, RootStackParamList } from "../components/types";
 import { mainStyle } from "../styles/mainStyle";
 import { saveScene } from "../utils/saveAndLoadScene";
@@ -21,15 +22,13 @@ export default function scene02({ navigation }: scene02Props) {
         navigation.navigate('scene03', { scene: 'scene03', progress: updateUserChoices })
 
     }
-
+    //upAndDownAnimation is NOT HTML entity, hence no tags <.../>
     return (
         <SafeAreaView style={mainStyle.container}>
             <Text style={mainStyle.text}>
                 Once upon a time there was a ...
             </Text>
-            <Scene02
-                style={mainStyle.image}
-            />
+            {upAndDownAnimation({ svg: Scene02Image, style: mainStyle.image })}
 
             <Pressable
                 style={mainStyle.button}

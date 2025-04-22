@@ -23,7 +23,7 @@ export default function scene05({ navigation }: scene05Props) {
             />
             <Pressable
                 style={mainStyle.button}
-                onPress={() => navigation.navigate('scene01', { scene: 'scene01', progress: route.params.progress })}
+                onPress={() => navigation.navigate('mainMenu', { scene: 'mainMenu', progress: route.params.progress })}
             >
                 <Text style={mainStyle.buttonText}>
                     Return to menu ~

@@ -18,7 +18,7 @@ import reduxStore from '../store/store';
 // string value into SQLite (Android).
 
 export const saveScene = async (currentScene: string, currentProgress: ProgressData) => {
-    
+
     const saveCurrentGame: GameData = {
         scene: currentScene,
         progress: currentProgress,

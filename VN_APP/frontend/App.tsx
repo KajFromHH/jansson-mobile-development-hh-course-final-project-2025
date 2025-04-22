@@ -4,9 +4,11 @@
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import AudioConfigs from "./components/AudioConfigs";
 import Settings from "./components/Settings";
 import { RootStackParamList } from "./components/types";
-import scene01 from "./scenes/scene01";
+import mainMenu from "./scenes/mainMenu";
 import scene02 from "./scenes/scene02";
 import scene03 from "./scenes/scene03";
 import scene04 from "./scenes/scene04";
@@ -18,10 +20,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="scene01">
+      <Stack.Navigator initialRouteName="mainMenu">
         <Stack.Screen
-          name="scene01"
-          component={scene01}
+          name="mainMenu"
+          component={mainMenu}
         />
         <Stack.Screen
           name="scene02"
@@ -42,6 +44,10 @@ export default function App() {
         <Stack.Screen
           name="Settings"
           component={Settings}
+        />
+        <Stack.Screen
+          name="AudioConfigs"
+          component={AudioConfigs}
         />
       </Stack.Navigator>
     </NavigationContainer>
