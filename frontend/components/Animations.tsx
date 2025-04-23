@@ -3,17 +3,20 @@
 //https://docs.expo.dev/versions/latest/sdk/reanimated/
 //https://docs.swmansion.com/react-native-reanimated/docs/animations/withRepeat
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { SvgProps } from 'react-native-svg';
 
 interface AnimatedSvgProps extends SvgProps {
     svg: React.FC<SvgProps>;
 }
-const AnimatedSvg = Animated.createAnimatedComponent((props: AnimatedSvgProps) => {
-    const { svg: SvgComponent, ...rest } = props;
-    return <SvgComponent {...rest} />
-});
+const SvgWrapper = forwardRef<SVGSVGElement, AnimatedSvgProps>(
+    (props, ref) => {
+        const { svg: SvgComponent, ...rest } = props;
+        return <SvgComponent {...rest} />;
+    })
+
+const AnimatedSvg = Animated.createAnimatedComponent(SvgWrapper);
 
 export function upAndDownAnimation({ svg: SvgComponent, style }:
     { svg: React.FC<SvgProps>, style: any }) {
@@ -29,12 +32,13 @@ export function upAndDownAnimation({ svg: SvgComponent, style }:
     const translateY = useSharedValue(0);
 
     translateY.value = withRepeat(
-        withTiming(200, { duration: 1000 }),
+        withTiming(50, { duration: 1000 }),
         -1,
         true,
     );
 
     const animatedStyle = useAnimatedStyle(() => {
+        console.log('translateY value: ', translateY.value)
         return {
             transform: [{ translateY: translateY.value }]
         }
@@ -44,9 +48,8 @@ export function upAndDownAnimation({ svg: SvgComponent, style }:
         <AnimatedSvg
             svg={SvgComponent}
             style={[style, animatedStyle]}
-            width="100%"
-            height="100%"
-            viewBox="0 0 100 100"
+            width={200}
+            height={200}
         />
     );
 }

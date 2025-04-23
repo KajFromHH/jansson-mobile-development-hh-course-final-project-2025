@@ -28,7 +28,7 @@ export default function scene02({ navigation }: scene02Props) {
             <Text style={mainStyle.text}>
                 Once upon a time there was a ...
             </Text>
-            {upAndDownAnimation({ svg: Scene02Image, style: mainStyle.image })}
+            {upAndDownAnimation({ svg: Scene02Image, style: {} })}
 
             <Pressable
                 style={mainStyle.button}

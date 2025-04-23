@@ -27,6 +27,8 @@ export const mainStyle = StyleSheet.create({
     },
     image: {
         flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         width: 'auto',
         height: 'auto'
     }
