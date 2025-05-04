@@ -1,0 +1,1 @@
+/components directory contains reusable configuration modules that manage imported assets such as audio, animations, data memory and effects.

@@ -1,0 +1,1 @@
+/scenes consists all naviagated sites in the app. They are called scenes according Visual Novel design principles, similar to book pages.
