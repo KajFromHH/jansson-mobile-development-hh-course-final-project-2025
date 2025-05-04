@@ -10,7 +10,7 @@ export const initialState: GameData = {
     scene: '',
     progress: {
         textRead: 0,
-        choicesMade: [],
+        choicesMade: {},
     },
 };
 

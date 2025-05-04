@@ -50,7 +50,7 @@ export default function endingA({ navigation }: endingAProps) {
                 >
                     <View style={mainStyle.textView}>
                         <Text style={mainStyle.text}>
-                            Ending ...! Poison ...
+                            Ending A: Ruined {route.params.progress.choicesMade['scene02']}...
                         </Text>
                     </View>
 

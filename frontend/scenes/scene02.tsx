@@ -24,9 +24,16 @@ export default function scene02({ navigation }: scene02Props) {
     const { playButtonSound } = useAudio();
 
     const handleChoices = (selectedChoice: string) => {
+        const currentScene = route.params.scene;
+
+        const updatedChoice = {
+            ...route.params.progress.choicesMade,
+            [currentScene]: selectedChoice
+        }
+
         const updateUserChoices: ProgressData = {
             ...route.params.progress,
-            choicesMade: [...route.params.progress.choicesMade, selectedChoice]
+            choicesMade: updatedChoice
         };
         saveScene(route.params.scene, updateUserChoices);
         navigation.navigate('scene03', { scene: 'scene03', progress: updateUserChoices })

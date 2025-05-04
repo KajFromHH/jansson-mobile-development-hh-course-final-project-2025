@@ -10,7 +10,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type ProgressData = {
     textRead: number;
-    choicesMade: string[];
+    choicesMade: { [sceneId: string]: string };
 };
 
 export type GameData = {

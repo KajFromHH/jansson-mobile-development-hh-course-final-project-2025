@@ -47,7 +47,7 @@ export default function scene04({ navigation }: scene04Props) {
                 >
                     <View style={mainStyle.textView}>
                         <Text style={mainStyle.text}>
-                            Oh no! The milk was expired by an year! Now our ... is ruined! So sad!
+                            Oh no! The milk was expired by an year! Now our {route.params.progress.choicesMade['scene02']} is ruined! So sad!
                         </Text>
                     </View>
 
