@@ -3,9 +3,10 @@
 //https://docs.expo.dev/versions/latest/sdk/reanimated/
 //https://docs.swmansion.com/react-native-reanimated/docs/animations/withRepeat
 
+//TODO: JOKo poistaa kokonaan tai muokkaa.
+/*
 import React, { forwardRef } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
-import { SvgProps } from 'react-native-svg';
 
 interface AnimatedSvgProps extends SvgProps {
     svg: React.FC<SvgProps>;
@@ -53,3 +54,4 @@ export function upAndDownAnimation({ svg: SvgComponent, style }:
         />
     );
 }
+    */

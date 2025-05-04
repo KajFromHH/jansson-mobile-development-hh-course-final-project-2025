@@ -4,25 +4,13 @@ import { Image, ImageBackground, Pressable, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useAudio } from "../contexts/AudioContext";
 import { mainStyle } from "../styles/mainStyle";
-import { ProgressData, RootStackParamList } from "../types";
-import { saveScene } from "../utils/saveAndLoadScene";
+import { RootStackParamList } from "../types";
 
-type scene02Props = NativeStackScreenProps<RootStackParamList, 'scene02'>;
+type endingAProps = NativeStackScreenProps<RootStackParamList, 'endingA'>;
 
-export default function scene02({ navigation }: scene02Props) {
-    const route = useRoute<RouteProp<RootStackParamList, 'scene02'>>();
+export default function endingA({ navigation }: endingAProps) {
+    const route = useRoute<RouteProp<RootStackParamList, 'endingA'>>();
     const { playButtonSound } = useAudio();
-
-    const handleChoices = (selectedChoice: string) => {
-        const updateUserChoices: ProgressData = {
-            ...route.params.progress,
-            choicesMade: [...route.params.progress.choicesMade, selectedChoice]
-        };
-        saveScene(route.params.scene, updateUserChoices);
-        navigation.navigate('scene03', { scene: 'scene03', progress: updateUserChoices })
-
-    }
-
     return (
         <SafeAreaProvider>
             <SafeAreaView style={mainStyle.container}>
@@ -33,7 +21,7 @@ export default function scene02({ navigation }: scene02Props) {
                 >
 
                     <Text style={mainStyle.text}>
-                        Help Katti in cooking...
+                        Ending ...! Poison ...
                     </Text>
 
                     <Image
@@ -41,31 +29,17 @@ export default function scene02({ navigation }: scene02Props) {
                         source={require("../assets/images/Character_happy.png")}
                         resizeMode="contain"
                     />
-
                     <Pressable
                         style={mainStyle.button}
                         onPress={() => {
-                            handleChoices("Cake");
                             playButtonSound();
+                            navigation.navigate('mainMenu', { scene: 'mainMenu', progress: route.params.progress })
                         }}
                     >
                         <Text style={mainStyle.buttonText}>
-                            Cake
+                            Return to menu ~
                         </Text>
                     </Pressable>
-
-                    <Pressable
-                        style={mainStyle.button}
-                        onPress={() => {
-                            handleChoices("Pie");
-                            playButtonSound();
-                        }}
-                    >
-                        <Text style={mainStyle.buttonText}>
-                            Pie
-                        </Text>
-                    </Pressable>
-
                     <Pressable
                         style={mainStyle.button}
                         onPress={() => {
@@ -77,9 +51,8 @@ export default function scene02({ navigation }: scene02Props) {
                             Settings
                         </Text>
                     </Pressable>
-
-                </ImageBackground >
-            </SafeAreaView>
-        </SafeAreaProvider >
+                </ImageBackground>
+            </SafeAreaView >
+        </SafeAreaProvider>
     );
 }

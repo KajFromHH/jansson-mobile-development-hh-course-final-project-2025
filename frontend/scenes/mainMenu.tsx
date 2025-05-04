@@ -2,28 +2,19 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Image, ImageBackground, Pressable, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { RootStackParamList } from "../components/types";
+import { useAudio } from "../contexts/AudioContext";
 import { initialState } from "../store/saveSlice";
 import { mainStyle } from "../styles/mainStyle";
+import { RootStackParamList } from "../types";
 
 
 type mainMenuProps = NativeStackScreenProps<RootStackParamList, 'mainMenu'>;
 
 export default function mainMenu({ navigation }: mainMenuProps) {
     const route = useRoute<RouteProp<RootStackParamList, 'mainMenu'>>();
+    const { playButtonSound } = useAudio();
 
     return (
-        //<Background style={mainStyle.background} />
-        /*<ImageBackground
-            style={mainStyle.background}
-            source={require('../assets/images/Background.svg')}
-            resizeMode="cover"
-        >
-            */
-        //<Background style={mainStyle.background} />
-        /*<Text style={mainStyle.text}>
-            Cooking with Katti!
-        </Text>*/
         <SafeAreaProvider>
             <SafeAreaView style={mainStyle.container}>
 
@@ -32,8 +23,6 @@ export default function mainMenu({ navigation }: mainMenuProps) {
                     style={mainStyle.background}
                     resizeMode="cover"
                 >
-
-
 
                     <Image
                         style={mainStyle.characterMenu}
@@ -51,7 +40,8 @@ export default function mainMenu({ navigation }: mainMenuProps) {
                     <Pressable
                         style={mainStyle.button}
                         onPress={() => {
-                            navigation.navigate('scene02', { scene: 'scene02', progress: initialState.progress })
+                            playButtonSound();
+                            navigation.navigate('scene02', { scene: 'scene02', progress: initialState.progress });
                         }}
                     >
                         <Text style={mainStyle.buttonText}>
@@ -60,7 +50,10 @@ export default function mainMenu({ navigation }: mainMenuProps) {
                     </Pressable>
                     <Pressable
                         style={mainStyle.button}
-                        onPress={() => navigation.navigate('Settings', { scene: 'mainMenu', progress: initialState.progress })}
+                        onPress={() => {
+                            playButtonSound();
+                            navigation.navigate('Settings', { scene: 'mainMenu', progress: initialState.progress })
+                        }}
                     >
                         <Text style={mainStyle.buttonText}>
                             Settings

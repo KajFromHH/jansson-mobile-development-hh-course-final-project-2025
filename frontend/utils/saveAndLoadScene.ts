@@ -8,9 +8,9 @@
 // Redux was chosen for its optimised perfomance for Android devices. 
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GameData, ProgressData } from '../components/types';
 import { setSaveGame } from '../store/saveSlice';
 import reduxStore from '../store/store';
+import { GameData, ProgressData } from '../types';
 
 
 // Saving scene as current game state.

@@ -4,7 +4,7 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { GameData } from '../components/types';
+import { GameData } from '../types';
 
 export const initialState: GameData = {
     scene: '',
