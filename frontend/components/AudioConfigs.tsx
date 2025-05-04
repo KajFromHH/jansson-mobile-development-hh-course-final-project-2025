@@ -4,6 +4,7 @@
 //Expo checkbox: https://docs.expo.dev/versions/latest/sdk/checkbox/
 //Expo simple Audio loop: https://docs.expo.dev/versions/latest/sdk/audio-av/
 
+/*
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { Audio } from "expo-av";
 import Checkbox from "expo-checkbox";
@@ -11,9 +12,10 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { mainStyle } from '../styles/mainStyle';
-import { RootStackParamList, audioProps } from './types';
 
-
+import { audioProps } from './types';
+*/
+/*
 export default function AudioConfigs({ navigation }: audioProps) {
     const route = useRoute<RouteProp<RootStackParamList>>();
 
@@ -71,22 +73,69 @@ export default function AudioConfigs({ navigation }: audioProps) {
             }
         }
     }, [playSoundEffect]);
+    */
+
+
+// Read official documents
+
+//Expo checkbox: https://docs.expo.dev/versions/latest/sdk/checkbox/
+//Expo improved Audio library,
+// due expo-av audio is depracated: https://docs.expo.dev/versions/latest/sdk/audio/
+
+import { useAudioPlayer } from "expo-audio";
+import Checkbox from "expo-checkbox";
+import React, { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
+import { mainStyle } from '../styles/mainStyle';
+
+import { audioProps } from './types';
+
+
+export default function AudioConfigs({ navigation }: audioProps) {
+    const [playMusic, setPlayMusic] = useState(true);
+    const [playSoundEffect, setPlaySoundEffect] = useState(true);
+    const gameMusic = useAudioPlayer(require('../assets/music/Synthpop_Free_Java_Cut_30_Ovani.wav'))
+    const gameSounds = useAudioPlayer(require('../assets/music/Synthpop_Free_Java_Cut_30_Ovani.wav'))
 
     return (
         <SafeAreaView style={mainStyle.container}>
-            <View>
-                <Text>Music: </Text>
-                <Checkbox value={playMusic} onValueChange={setPlayMusic} />
+            <View style={mainStyle.section}>
+                <Text style={mainStyle.checkboxText}>
+                    Music:
+                </Text>
+                <Checkbox
+                    style={mainStyle.checkbox}
+                    value={playMusic}
+                    onValueChange={(newValue) => {
+                        setPlayMusic(newValue);
+                        if (newValue) {
+                            gameMusic.play();
+                        } else {
+                            gameMusic.pause();
+                        }
+                    }}
+                />
 
             </View>
-            <View>
-                <Text>Sound: </Text>
-                <Checkbox value={playSoundEffect} onValueChange={setPlaySoundEffect} />
+            <View style={mainStyle.section}>
+                <Text style={mainStyle.checkboxText}>
+                    Sound:
+                </Text>
+                <Checkbox
+                    style={mainStyle.checkbox}
+                    value={playSoundEffect}
+                    onValueChange={() => setPlaySoundEffect}
+                />
             </View>
-            <Button
-                title="Close"
+            <Pressable
+                style={mainStyle.button}
                 onPress={() => navigation.goBack()}
-            />
+            >
+                <Text style={mainStyle.buttonText}>
+                    Exit
+                </Text>
+            </Pressable>
         </SafeAreaView>
 
     );

@@ -45,6 +45,7 @@ export default function App() {
           name="Settings"
           component={Settings}
         />
+
         <Stack.Screen
           name="AudioConfigs"
           component={AudioConfigs}

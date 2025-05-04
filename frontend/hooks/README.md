@@ -1,0 +1,1 @@
+According Microsoft Co-pilot, hooks/ directory for reusable logix that doesn't manage global state - like useDebounce, useFetch, or useForm.
