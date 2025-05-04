@@ -1,12 +1,7 @@
-# Jansson android mobile app: A visual novel.
+# Frontend manual.
 
-This is the final project for Mobile Development -course Spring 2025 at Haaga-Helia University
-of Applied Sciences. The project was developed by Kaj Jansson.
-
-Jansson decided to develop a visual novel app, i.e. an interactive storybook with visuals,
-audio and other technical components such as saving and loading progess.
-
-Note that I renamed the "visual novel app" as VN_APP.
+This is the frontend, and actually the whole and main repository (i.e. code project),
+of the VN_APP. 
 
 A) List of languages, tools and libraries.
 
@@ -121,7 +116,7 @@ in my Android phone (Samsung Galaxy A20 model) and
 Android SDK is NOT required for enabling app to work 
 in Android devices, I didn't see a need to fix this problem now.
 
-2) The music doesn't looping.
+2) The music doesn't looping after waiting or idling in same scene.
 
 This is known restriction with the current version of Expo Audio library.
 
@@ -143,4 +138,8 @@ into my app.
 
 In summary, since current version of Expo Audio has no looping methods,
 the music will not loop in the current version of VN_APP.
+
+One thing that I noticed, that the music will loop again after 
+returning to Main menu screen. The music doesn't loop if one waits 
+or idles for about a minute in same screen.
 
