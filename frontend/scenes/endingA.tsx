@@ -26,7 +26,7 @@ export default function endingA({ navigation }: endingAProps) {
 
                     <Image
                         style={mainStyle.characterMenu}
-                        source={require("../assets/images/Character_happy.png")}
+                        source={require("../assets/images/Character_sad.png")}
                         resizeMode="contain"
                     />
                     <Pressable

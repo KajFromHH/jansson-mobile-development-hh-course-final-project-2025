@@ -28,7 +28,7 @@ export default function scene04({ navigation }: scene04Props) {
 
                     <Image
                         style={mainStyle.characterMenu}
-                        source={require("../assets/images/Character_happy.png")}
+                        source={require("../assets/images/Character_sad.png")}
                         resizeMode="contain"
                     />
                     <Pressable
