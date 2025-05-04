@@ -7,12 +7,39 @@ import { initialState } from "../store/saveSlice";
 import { mainStyle } from "../styles/mainStyle";
 import { RootStackParamList } from "../types";
 
+import React from "react";
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    withRepeat,
+    withTiming
+} from 'react-native-reanimated';
+
+const duration = 1000; //value is in millisecond, hence 1000 ms = 1s
 
 type mainMenuProps = NativeStackScreenProps<RootStackParamList, 'mainMenu'>;
 
 export default function mainMenu({ navigation }: mainMenuProps) {
     const route = useRoute<RouteProp<RootStackParamList, 'mainMenu'>>();
     const { playButtonSound } = useAudio();
+
+    //Followed example from Reanimated documentation by swmansion, section "Configuring withTiming"
+    //source: https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/customizing-animation
+    //Then I needed help from Co-pilot since image wasn't visible in the screen anymore.
+
+    const defaultAnimation = useSharedValue(0);
+
+    const upAndDownAnimation = useAnimatedStyle(() => ({
+        transform: [{ translateY: defaultAnimation.value }],
+    }));
+
+    React.useEffect(() => {
+        defaultAnimation.value = withRepeat(
+            withTiming(-30, { duration }),
+            -1,
+            true
+        );
+    }, []);
 
     return (
         <SafeAreaProvider>
@@ -24,8 +51,8 @@ export default function mainMenu({ navigation }: mainMenuProps) {
                     resizeMode="cover"
                 >
 
-                    <Image
-                        style={mainStyle.characterMenu}
+                    <Animated.Image
+                        style={[mainStyle.characterMenu, upAndDownAnimation]}
                         source={require("../assets/images/Character_happy.png")}
                         resizeMode="contain"
                     />

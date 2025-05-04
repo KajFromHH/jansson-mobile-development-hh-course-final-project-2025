@@ -15,22 +15,32 @@ export const mainStyle = StyleSheet.create({
         justifyContent: 'center',
         margin: 10,
     },
-    text: {
+    textView: {
         flex: 1,
+        alignItems: 'center',
+        alignSelf: 'flex-start',
+        justifyContent: 'flex-start',
+    },
+    text: {
         fontSize: 36,
         color: 'black',
-        alignItems: 'flex-start',
+        textAlign: 'left',
+        borderColor: 'black',
+        borderStyle: 'solid',
+        borderRadius: 25,
+        borderWidth: 2,
+        paddingVertical: 6,
+        paddingHorizontal: 10,
+        margin: 5,
+        backgroundColor: 'orange',
 
     },
-    buttonText: {
-        fontSize: 28,
-        color: 'black'
+    buttonView: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
+        paddingBottom: 20
     },
-    checkboxText: {
-        fontSize: 20,
-        color: 'black'
-    },
-
     button: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -41,17 +51,24 @@ export const mainStyle = StyleSheet.create({
         backgroundColor: 'pink',
 
     },
+    buttonText: {
+        fontSize: 28,
+        color: 'black'
+    },
     checkbox: {
         margin: 10,
     }
     ,
+    checkboxText: {
+        fontSize: 20,
+        color: 'black'
+    },
     image: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        flex: 2,
+        justifyContent: "center",
+        alignItems: "center",
         width: '100%',
         height: '100%',
-
     },
     background: {
         flex: 1,
@@ -61,15 +78,6 @@ export const mainStyle = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-
-        //width: moddedWidth,
-        //height: moddedHeight,
-
-        //minHeight: 1920,
-        //minWidth: 1080,
-        //width: 'auto',
-        //height: 'auto',
-
     },
     characterMenu: {
         flex: 1,
@@ -79,16 +87,6 @@ export const mainStyle = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'absolute'
-
-    },
-    character: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        width: '100%',
-        height: '100%',
-        position: 'absolute'
-
     },
     logo: {
         flex: 1,
@@ -100,5 +98,4 @@ export const mainStyle = StyleSheet.create({
 
 
     }
-
 });
