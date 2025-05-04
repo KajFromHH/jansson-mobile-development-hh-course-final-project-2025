@@ -1,4 +1,97 @@
-Add text about frontend...
+# Jansson android mobile app: A visual novel.
+
+This is the final project for Mobile Development -course Spring 2025 at Haaga-Helia University
+of Applied Sciences. The project was developed by Kaj Jansson.
+
+Jansson decided to develop a visual novel app, i.e. an interactive storybook with visuals,
+audio and other technical components such as saving and loading progess.
+
+Note that I renamed the "visual novel app" as VN_APP.
+
+A) List of languages, tools and libraries.
+
+The mobile app was developed in Typescript with React Native 
+and Expo framework.
+
+
+You can easily get whole list of tools and libraries
+via inputing following command in the 
+C:\jansson-mobile-development-hh-course-final-project-2025\frontend -directory:
+
+```
+npm ls
+```
+
+As May 5th 2025, the following tools and libraries were used:
+
++-- @babel/core@7.26.10
+
++-- @babel/plugin-proposal-export-namespace-from@7.18.9
+
++-- @expo/metro-runtime@4.0.1
+ = Used for primarily testing android app directly in web browser environment.
+
++-- @react-native-async-storage/async-storage@1.23.1
+ = Used for saving and loading data, especially users' progress in the story.
+
+
++-- @react-navigation/native@7.1.6
++-- @react-navigation/native-stack@7.3.10
+= Used for specifically navigating all scenes in the application, i.e. reading story scene-by-scene.
+Mandatory especially in the main file App.tsx when running the app. Otherwise, the app can't navigate
+from scene by scene.
+
++-- react-native-screens@4.4.0
+= used for navigating and managing scenes in the app.
+
+
++-- react-native@0.76.9
++-- react-redux@9.2.0
++-- @reduxjs/toolkit@2.7.0
+= redux was the solution for managing users' choices and progress, such as saving and loading scene.
+The redux is used in ./store/saveSlice.ts, ./store/saveSlice.ts and ./utils/saveAndLoadScene.ts files.
+
++-- @types/react@18.3.20
+= mandatory library for Typescript in order handling and checking all essential variables'
+and functions' type. 
+
++-- expo-audio@0.3.5
+= the tool for managing music and sound effects in the app. Before this I used expo-av/audio,
+but since it is depracated according to Expo official documents, I had to integrated to recommended
+expo-audio.
+
++-- expo-checkbox@4.0.1
+= this is used specifically turning on and off music / sound effects in the app.
+
++-- expo-status-bar@2.0.1
+
++-- expo@52.0.46
+= the main framework in whole app, especially for android device.
+
++-- react-dom@18.3.1
+
++-- react-native-reanimated@3.16.7
+= used for simple animations of visual in the app, such as up-and-down movements and alike.
+
++-- react-native-safe-area-context@4.12.0
+= recommended tool for Android devices, so that app will be visible according to Android devices'
+screen dimensions. 
+
++-- react-native-web@0.19.13
++-- react@18.3.1
++-- typescript@5.8.3
+`-- vn_app@1.0.0 -> .\
+
+In older version of my app had also the libraries (now unistalled from the app)
++-- react-native-svg-transformer@1.5.0
++-- react-native-svg@15.8.0
+
+= this two libraries for managing all SVG (vector image) files in the app.
+Microsoft Co-pilot recommended vector images for better performance in the Android device.
+However, this two SVG libraries weren't compability for rest of Expo libraries and Typescript,
+causing more unpexpected errors than default PNG image files. Due errors, I made decision to
+uninstall this libraries.
+
 
 L) Known technical problems:
 
