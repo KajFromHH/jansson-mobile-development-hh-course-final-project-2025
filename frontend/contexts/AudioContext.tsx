@@ -6,8 +6,8 @@ const AudioContext = createContext<AudioContextType | undefined>(undefined);
 
 export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-    const [playMusic, setPlayMusic] = useState(false);
-    const [playSoundEffect, setPlaySoundEffect] = useState(false);
+    const [playMusic, setPlayMusic] = useState(true);
+    const [playSoundEffect, setPlaySoundEffect] = useState(true);
 
 
     //There is no Audio object with loops and other method,
@@ -40,13 +40,17 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     useEffect(() => {
         const interval = setInterval(async () => {
-            if (!gameMusic.playing && playMusic) {
-                await gameMusic.play();
+            if (gameMusic?.isLoaded && playMusic) {
+                gameMusic.play();
             }
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [gameMusic, playMusic]);
+    }, [gameMusic?.isLoaded, playMusic]);
+    //The Co-pilot suggested first gameMusic?.loaded method, but such method isn't exposed in Audio.
+    //Hence, I checked equivalent from Expo Audio documentation and found isLoaded.
+    //Seems to work.
+
 
     const toggleMusic = (value: boolean) => {
         setPlayMusic(value);

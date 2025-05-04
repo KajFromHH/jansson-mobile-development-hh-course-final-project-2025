@@ -93,7 +93,7 @@ causing more unpexpected errors than default PNG image files. Due errors, I made
 uninstall this libraries.
 
 
-L) Known technical problems:
+B) Known issues technical problems:
 
 1) There is problems in /android directory with following error message:
 
@@ -120,3 +120,27 @@ However, since I'm already testing my app functionality
 in my Android phone (Samsung Galaxy A20 model) and 
 Android SDK is NOT required for enabling app to work 
 in Android devices, I didn't see a need to fix this problem now.
+
+2) The music doesn't looping.
+
+This is known restriction with the current version of Expo Audio library.
+
+The Ovani royalty-free 'Synthpop_Free_Java_Cut_30_Ovani.wav
+is pre-cut as 30 second soundtrack.
+
+However, the useEffect for gameMusic.play() in AudioContext.tsx
+is not a reactive state, thus React doesn't re-run the music until
+something is changed in the useEffect, such as on or off music in
+the checkbox, according the Microsoft Co-Pilot.
+
+Expo Audio does expose loop, but after testing gameMusic.loop,
+nothing changed.
+
+Microsoft Co-Pilot recommended to use looping method (i.e. isLooping)
+by expo-av. Since expo-av audio is considered depracated
+by the official Expo documentation, I decided not use Co-pilot's solution
+into my app.
+
+In summary, since current version of Expo Audio has no looping methods,
+the music will not loop in the current version of VN_APP.
+
