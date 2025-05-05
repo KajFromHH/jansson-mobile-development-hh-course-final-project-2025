@@ -106,7 +106,7 @@ This is a requirement for native builds such as EAS Build
 or running npx react-native run-android.
 
 It is similar like in my Software Development course,
-when we need specify JAVA_HOME environment variables
+when I need specify JAVA_HOME environment variables
 to absolutely correct path for installed Java in each 
 our workstations. Otherwise, our Java with Gradle -backend
 can't never able to build an java jar in the workstations.
@@ -115,6 +115,8 @@ However, since I'm already testing my app functionality
 in my Android phone (Samsung Galaxy A20 model) and 
 Android SDK is NOT required for enabling app to work 
 in Android devices, I didn't see a need to fix this problem now.
+
+---
 
 2) The music doesn't looping after waiting or idling in same scene.
 
@@ -143,3 +145,109 @@ One thing that I noticed, that the music will loop again after
 returning to Main menu screen. The music doesn't loop if one waits 
 or idles for about a minute in same screen.
 
+---
+
+3) When saving at Scene03, my choice is not saved correctly.
+
+True. I tried a another technical bug when it came to managing user choices.
+User choice in scene02 (i.e. Pie or Cake) is handled the handleChoices method of scene02.tsx:
+
+´´´
+//scene02.tsx (NEW)
+
+    const handleChoices = (selectedChoice: string) => {
+        const currentScene = route.params.scene;
+
+        const updatedChoice = {
+            ...route.params.progress.choicesMade,
+            [currentScene]: selectedChoice
+        }
+
+        const updateUserChoices: ProgressData = {
+            ...route.params.progress,
+            choicesMade: updatedChoice
+        };
+        saveScene(route.params.scene, updateUserChoices);
+        navigation.navigate('scene03', { scene: 'scene03', progress: updateUserChoices })
+
+    }
+´´´
+
+where choiceMade (in types.ts) is a structured type consisting
+the id of Scene (string) where choice made and the choice itself (string),
+in this case "Cake" or "Pie".
+
+In other words,
+```
+//types.ts (NEW)
+export type ProgressData = {
+    textRead: number;
+    choicesMade: { [sceneId: string]: string };
+};
+```
+will be updated in Scene02.tsx as " choicesMade: {[sceneId : "scene02"]: "Cake"}.
+
+The new type structure of choicesMade was suggested by Microsoft Co-pilot,
+in order solving a problem in the older version of handleChoices method:
+
+```
+//scene02.tsx (OLD)
+   const handleChoices = (selectedChoice: string) => {
+         const updateUserChoices: ProgressData = {
+             ...route.params.progress,
+             choicesMade: [...route.params.progress.choicesMade, selectedChoice]
+         };
+         saveScene(route.params.scene, updateUserChoices);
+         navigation.navigate('scene03', { scene: 'scene03', progress: updateUserChoices })
+ 
+     }
+```
+with old type structure of choicesMade:
+```
+//types.ts
+
+export type ProgressData = {
+     textRead: number;
+     choicesMade: string[];
+ }
+
+```
+where choicesMade will appended with new choices in scene02.tsx, i.e. choicesMade["Pie", "Cake", "Cake", ...].
+
+Both have its own plus and minus.
+
+The new solution is more precise and controlled on what scene has choicesMade been updated and what value. Thus calling it on e.g. scene04.tsx with {route.params.progress.choicesMade['scene02']}.
+
+This is great solution in scenarios, when user saves at Scene02.tsx 
+and loads back to Scene02.tsx from Scene04.tsx in order to change their choices.
+However, there is technical bug, that if user instead saves at scene03.tsx 
+and returns back to endingA.tsx, the choice is no more saved. This is due
+that initialState of Redux saveSlice.tsx (which handles saving and loading progress)
+is default empty or zero:
+
+```
+//saveSlice.tsx
+export const initialState: GameData = {
+    scene: '',
+    progress: {
+        textRead: 0,
+        choicesMade: {},
+    },
+};
+```
+This could causing problem when trying return to any other scenes after scene02.
+
+Meanwhile the old version had more persistent on remembering the choicesMade.
+Calling it via route.params.progress.choicesMade[0] in Scene04, it will always
+present the first made choice from user in every saving and loading scenes.
+In other words, it is "hard saved" which again has own problems.
+
+In the old solution, all new choices -values from Scene02.tsx will only appended to the
+choicesMade array. This means, if user returns to scene02 from EndingA and their first choice
+was "Cake", the "Cake" string will always be shown in scene04 and EndingA even if user
+changed recently their choice to "Pie".
+
+According to Co-pilot, managing the choices with save & load functionality is one of the most
+common and difficult bugs to fix in Visual Novels.
+
+In summary, the new solution must be fixed in future.
