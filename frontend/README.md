@@ -147,7 +147,49 @@ or idles for about a minute in same screen.
 
 ---
 
-3) When saving at Scene03, my choice is not saved correctly.
+3) I installed your VN_APP to my Android phone, via QR code at Expo Dev.
+Neither music nor sound effect does not working at all.
+
+This is a known issue at least following Android phones:
+
+* Samsung Galaxy A20
+
+As May 5th 2025 and few days back, in my knowledge, a significant update
+for Expo Go was published to Google Play store. In the new update of Expo Go,
+all Expo projects have to update from old Expo SDK 52 to current 53.
+It is marked in dependencies of package.json file:
+
+```
+  "dependencies": {
+    ...
+    "expo": "^53.0.7",
+    ...
+```
+When I updated my project to Expo SDK 53, a lot of third party libraries
+such as Reanimated and specifically Audio:
+
+![image](/frontend/assets/images/expo_start_tunnel_message.png)
+
+
+Just week a ago, the app was working fine in my Samsung Galaxy A20 phone.
+Here's is screenshot:
+![image](/frontend/assets/images/screenshot_of_VN_APP_tuesday_29_04_2025.png)
+
+Now the current Expo Go will show this error message if running VN_APP
+via npx expo start --tunnel:
+![image](/frontend/assets/images/screenshot_of_VN_APP_monday_05_05_2025_with_error_message.png)
+
+I reinstall and update all libraries with no result.
+
+Until Expo Go developers update this technical issue,
+the VN_APP will not the Audio correctly when installed from the Expo Dev cloud.
+
+If you use an Iphone, then unfortunately it won't work.
+The app was build specifically for Android platforms.
+
+---
+
+4) When saving for example at Scene03, my choice is not saved correctly.
 
 True. I tried a another technical bug when it came to managing user choices.
 User choice in scene02 (i.e. Pie or Cake) is handled the handleChoices method of scene02.tsx:
